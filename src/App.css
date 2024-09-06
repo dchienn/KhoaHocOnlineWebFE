@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+.content-area {
+  width: 100%;
+  margin-left: 0; /* Đặt khoảng cách giữa content và thanh điều hướng thành 0 */
+  padding-left: 20px; /* Đặt khoảng cách giữa content và thanh điều hướng để không dính sát hoàn toàn */
+}
+
+.sticky-top {
+  position: sticky;
+  top: 20px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+/* Đặt chiều cao 100% cho body và html */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Đảm bảo layout của trang luôn chiếm đủ chiều cao */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Chiều cao tối thiểu 100% viewport */
+}
+
+/* Đặt nội dung chính để chiếm tối đa không gian có thể */
+.content {
+  flex: 1;
+}
+
+/* Đảm bảo footer luôn nằm cuối trang */
+footer {
+  background-color: #f1f1f1;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

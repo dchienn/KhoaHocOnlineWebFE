@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { CourseProvider } from './context/CourseContext';
+import UserPage from './page/UserPage';
+import CourseDetails from './components/CourseDetails';
 
 function App() {
+  useEffect(() => {
+    // Mặc định userID và instructorID khi ứng dụng khởi chạy
+    localStorage.setItem('userId', '1'); // Mặc định userID là 1
+    localStorage.setItem('instructorId', '1'); // Mặc định instructorID là 1
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CourseProvider>
+      <Router>
+        <Routes>
+          {/* Route chính */}
+          <Route path="/*" element={<UserPage />} />
+          <Route path="/courses/:id/content" element={<CourseDetails />} />
+        </Routes>
+      </Router>
+    </CourseProvider>
   );
 }
 
